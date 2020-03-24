@@ -4,7 +4,7 @@ if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
 	'key' => 'group_5e7a260757ead',
-	'title' => 'Peyment date',
+	'title' => 'Payment date',
 	'fields' => array(
 		array(
 			'key' => 'wm-mpt-poi-paid-date',
