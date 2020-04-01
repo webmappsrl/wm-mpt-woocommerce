@@ -10,4 +10,5 @@ require ('include/wm-mpt-wc.php');
 require ('acf-poi/custom-acf-poi.php');
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
   require_once dirname( __FILE__ ) . '/wm-cli/wm-mpt-cli-update-poi-paid-date.php';
+  require_once dirname( __FILE__ ) . '/wm-cli/wm-mpt-clean-paid-date.php';
 }
