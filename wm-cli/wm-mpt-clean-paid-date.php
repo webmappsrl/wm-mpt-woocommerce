@@ -20,8 +20,12 @@ $wm_mpt_clean_paid_date = function( $args, $assoc_args )
         $count = 1;
         foreach ($pois as $poi ){
             $pdate = get_field('paid_date',$poi->ID);
-            delete_field('paid_date',$poi->ID);
-            WP_CLI::success( $count .' - Updating peyment date of POI ID # ' . $poi->ID .' from date: '.$pdate.' to new value: ' );
+            if ($pdate) {
+                delete_field('paid_date',$poi->ID);
+                WP_CLI::success( $count .' - Updating peyment date of POI ID # ' . $poi->ID .' from date: '.$pdate.' to new value: ' );
+            } else {
+                WP_CLI::success( $count .' - The of POI ID # ' . $poi->ID . ' Paid date is already empty' );
+            }
             $count ++;
         }
     } else {
