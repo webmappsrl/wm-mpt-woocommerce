@@ -6,7 +6,7 @@
 # Success: bar qux
 
 /**
- * Returns all post meta of post id provided
+ * Clears the ACF paid_date of these POI '401','402','403','404','405'
  *
  *
  * @when after_wp_load

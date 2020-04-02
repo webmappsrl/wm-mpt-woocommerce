@@ -6,7 +6,7 @@
 # Success: bar qux
 
 /**
- * Returns all post meta of post id provided
+ * Updates the ACF paid_date of all sold POI taking the new value from WC orders
  *
  *
  * @when after_wp_load
