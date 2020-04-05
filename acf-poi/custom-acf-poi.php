@@ -54,10 +54,28 @@ if( function_exists('acf_add_local_field_group') ):
 		'key' => 'group_5caf0f4d42775',
 		'title' => 'Aggiungi data di acquisto',
 		'fields' => array(
+			// array(
+			// 	'key' => 'wm_order_parid_date',
+			// 	'label' => 'Data di acquisto',
+			// 	'name' => '_paid_date',
+			// 	'type' => 'date_picker',
+			// 	'instructions' => '',
+			// 	'required' => 0,
+			// 	'conditional_logic' => 0,
+			// 	'wrapper' => array(
+			// 		'width' => '',
+			// 		'class' => '',
+			// 		'id' => '',
+			// 	),
+			// 	'display_format' => 'd/m/Y',
+			// 	'return_format' => 'd/m/Y',
+			// 	'first_day' => 1,
+			// 	'readonly' => 1
+			// ),
 			array(
-				'key' => 'wm_order_parid_date',
+				'key' => 'wm_order_parid_date2',
 				'label' => 'Data di acquisto',
-				'name' => '_paid_date',
+				'name' => 'order_paid_date',
 				'type' => 'date_picker',
 				'instructions' => '',
 				'required' => 0,
@@ -67,9 +85,10 @@ if( function_exists('acf_add_local_field_group') ):
 					'class' => '',
 					'id' => '',
 				),
-				'display_format' => 'Y/m/d',
+				'display_format' => 'd/m/Y',
 				'return_format' => 'd/m/Y',
 				'first_day' => 1,
+				'readonly' => 1
 			),
 			array(
 				'key' => 'wm_order_json',
