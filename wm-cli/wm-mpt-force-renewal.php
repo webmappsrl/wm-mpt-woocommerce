@@ -29,7 +29,7 @@ $wm_mpt_force_renewal = function( $args, $assoc_args )
                 $subject = 'Rinnovo dell\'albero Montepisanotree ';
                 $heading = 'Rinnovo Albero';
                 $message = 'è scaduto adozione del tuo albero, per rinnovare clicca qui: 
-                            <a href="'.home_url().'/renewal/?order_id=6922">Rinnova il tuo adozione</a>
+                            <a href="'.home_url().'/renewal/?order_id='.$args[0].'">Rinnova il tuo adozione</a>
                             ';
                 // if ($current_paid_date == $paid_date) {
                 // wp_mail( $order_billing_email, $subject, $message, $headers, $attachments );
@@ -62,7 +62,7 @@ $wm_mpt_force_renewal = function( $args, $assoc_args )
                 $html_messageAdmin = $wc_email->style_inline($wrapped_messageAdmin);
                 
                 wp_mail( 'pedramkatanchi@webmapp.it', $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
-                wp_mail( 'alessiopiccioli@webmapp.it', $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
+                // wp_mail( 'alessiopiccioli@webmapp.it', $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
                 WP_CLI::success( $count .' - order matched ID # ' . $args[0] . '.Renewal sent with order paid date: '. $current_paid_date );
 
                 $count ++;
