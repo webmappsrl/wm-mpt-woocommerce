@@ -47,7 +47,7 @@ $wm_mpt_expired = function( $args, $assoc_args )
                         foreach ( $items as $item) {
                             $message .= '<a href="'.esc_url(get_permalink($item->id)).'">'.$item->title .' - '. $modality .'</a><br>';
                             WP_CLI::line( ' Resetting paid date of poi with name ' . $item->title .' and ID # '. $item->id);
-                            // delete_field('paid_date',$item->id);
+                            delete_field('paid_date',$item->id);
                         }
                         endif;
                     }
@@ -59,7 +59,7 @@ $wm_mpt_expired = function( $args, $assoc_args )
                         $poi_id = $poi->ID;
                         $message .= '<a href="'.esc_url(get_permalink($poi->ID)).'">'.$product_name_variation.'</a><br>';
                         WP_CLI::line( ' Resetting paid date of poi with name ' . $poi_name .' and ID # '. $poi_id);
-                        // delete_field('paid_date',$poi->ID);
+                        delete_field('paid_date',$poi->ID);
                     }
                 }
                 
