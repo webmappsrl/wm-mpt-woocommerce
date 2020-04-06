@@ -19,7 +19,7 @@ $wm_mpt_renewal = function( $args, $assoc_args )
     $heading = 'Rinnova l\'adozione';
 
     $arg = array(
-        'limit' => 1000,
+        'limit' => 10000,
         'status' => array('completed','processing'),
     );
     $orders = wc_get_orders($arg);
@@ -58,13 +58,13 @@ $wm_mpt_renewal = function( $args, $assoc_args )
                     // Admin email
                     $headingADmin = 'Remainder per '. $days .' gironi prima di scadenza mandato ';
                     $messageADmin = 'Scade tra '.$days.' giorni l\'adozione di un albero, per vedere l\'ordine clicca qui: 
-                    <a href="'.esc_url( $order->get_edit_order_url() ).'">ordine numero '.$args[0].'</a>
+                    <a href="'.esc_url( $order->get_edit_order_url() ).'">ordine numero '.$order->ID.'</a>
                     ';
-                    $subjectAdmin = 'è stato mandato un reminder per ordine # '.$args[0];
+                    $subjectAdmin = 'è stato mandato un reminder per ordine # '.$order->ID;
                     $wrapped_messageAdmin = $mailer->wrap_message($headingADmin, $messageADmin);
                     $html_messageAdmin = $wc_email->style_inline($wrapped_messageAdmin);
                     
-                    wp_mail( 'pedramkatanchi@webmapp.it', $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
+                    // wp_mail( 'pedramkatanchi@webmapp.it', $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
                     wp_mail( 'alessiopiccioli@webmapp.it', $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
                     WP_CLI::success( 'Email sent to: '. $order_billing_email);
                     $count ++;

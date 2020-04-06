@@ -13,5 +13,6 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
   require_once dirname( __FILE__ ) . '/wm-cli/wm-mpt-clean-paid-date.php';
   require_once dirname( __FILE__ ) . '/wm-cli/wm-mpt-force-renewal.php';
   require_once dirname( __FILE__ ) . '/wm-cli/wm-mpt-renewal.php';
+  require_once dirname( __FILE__ ) . '/wm-cli/wm-mpt-expired.php';
   require_once dirname( __FILE__ ) . '/wm-cli/wm-mpt-duplicate-orders-paid-date.php';
 }
