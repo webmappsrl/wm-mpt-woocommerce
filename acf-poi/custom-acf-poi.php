@@ -73,7 +73,7 @@ if( function_exists('acf_add_local_field_group') ):
 			// 	'readonly' => 1
 			// ),
 			array(
-				'key' => 'wm_order_parid_date2',
+				'key' => 'wm_mpt_order_paid_date',
 				'label' => 'Data di acquisto',
 				'name' => 'order_paid_date',
 				'type' => 'date_picker',

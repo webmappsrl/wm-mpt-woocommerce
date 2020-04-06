@@ -62,7 +62,7 @@ $wm_mpt_force_renewal = function( $args, $assoc_args )
                 $html_messageAdmin = $wc_email->style_inline($wrapped_messageAdmin);
                 
                 wp_mail( 'pedramkatanchi@webmapp.it', $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
-                wp_mail( 'alessiopiccioli@webmapp.it', $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
+                // wp_mail( 'alessiopiccioli@webmapp.it', $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
                 WP_CLI::success( $count .' - order matched ID # ' . $args[0] . '.Renewal sent with order paid date: '. $current_paid_date );
 
                 $count ++;
