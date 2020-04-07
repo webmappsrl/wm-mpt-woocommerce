@@ -64,8 +64,11 @@ $wm_mpt_renewal = function( $args, $assoc_args )
                     $wrapped_messageAdmin = $mailer->wrap_message($headingADmin, $messageADmin);
                     $html_messageAdmin = $wc_email->style_inline($wrapped_messageAdmin);
                     
-                    // wp_mail( 'pedramkatanchi@webmapp.it', $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
-                    wp_mail( 'alessiopiccioli@webmapp.it', $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
+                    // Get recipients from New Order email notification
+                    $new_order_recipient = WC()->mailer()->get_emails()['WC_Email_New_Order']->get_recipient();
+                    $admin_emails = explode(',',$new_order_recipient);
+
+                    wp_mail( $admin_emails, $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
                     WP_CLI::success( 'Email sent to: '. $order_billing_email);
                     $count ++;
                 }
