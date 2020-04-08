@@ -63,9 +63,8 @@ $wm_mpt_force_renewal = function( $args, $assoc_args )
                 
                 // Get recipients from New Order email notification
                 $new_order_recipient = WC()->mailer()->get_emails()['WC_Email_New_Order']->get_recipient();
-                $admin_emails = explode(',',$new_order_recipient);
 
-                wp_mail( $admin_emails, $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
+                wp_mail( $new_order_recipient, $subjectAdmin, $html_messageAdmin, HTML_EMAIL_HEADERS );
                 WP_CLI::success( $count .' - order matched ID # ' . $args[0] . '.Renewal sent with order paid date: '. $current_paid_date );
 
                 $count ++;
