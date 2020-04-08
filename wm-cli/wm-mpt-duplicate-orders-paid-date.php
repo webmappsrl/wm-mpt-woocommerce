@@ -22,7 +22,7 @@ $wm_mpt_duplicate_date = function( $args, $assoc_args )
     foreach ($orders as $order ){
                 $order_meta = get_post_meta($order->ID);
                 $current_paid_date = $order_meta['_paid_date'][0];
-                $current_paid_date = date("Ymd", strtotime($current_paid_date));
+                $current_paid_date = date("Y-m-d", strtotime($current_paid_date));
                 if ($current_paid_date) {
                     update_field('order_paid_date', $current_paid_date, $order->ID);
                     WP_CLI::success( $count .' - order ID # ' . $order->ID . ' order paid date: '. $current_paid_date . ' copied ' );

@@ -28,9 +28,9 @@ $wm_mpt_expired = function( $args, $assoc_args )
         foreach ($orders as $order ){
             $order_data = $order->get_data();
             $current_paid_date = get_field('order_paid_date',$order->ID);
-            $expiry_date = date("d-m-Y", strtotime("+1 years +1 day", strtotime($current_paid_date)));
-            $current_paid_date = date("d-m-Y", strtotime($current_paid_date));
-            $today = date('d-m-Y');
+            $expiry_date = date("Y-m-d", strtotime("+1 years +1 day", strtotime($current_paid_date)));
+            $current_paid_date = date("Y-m-d", strtotime($current_paid_date));
+            $today = date('Y-m-d');
             $order_billing_email = $order_data['billing']['email'];
             
             if ($today == $expiry_date) {
