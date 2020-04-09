@@ -19,8 +19,8 @@ $wm_mpt_renewal = function( $args, $assoc_args )
     $heading = 'Rinnova l\'adozione';
 
     $arg = array(
-        'limit' => 10000,
-        'status' => array('completed','processing'),
+        'limit' => -1,
+        // 'status' => array('completed','processing'),
     );
     $orders = wc_get_orders($arg);
     $count = 1;
@@ -29,10 +29,10 @@ $wm_mpt_renewal = function( $args, $assoc_args )
         foreach ($orders as $order ){
             $order_data = $order->get_data();
             $current_paid_date = get_field('order_paid_date',$order->ID);
-            $notice_date = date("d-m-Y", strtotime("+1 years - $args[0] day", strtotime($current_paid_date)));
-            $expiry_date = date("d-m-Y", strtotime("+1 years", strtotime($current_paid_date)));
-            $current_paid_date = date("d-m-Y", strtotime($current_paid_date));
-            $today = date('d-m-Y');
+            $notice_date = date("Y-m-d", strtotime("+1 years - $args[0] day", strtotime($current_paid_date)));
+            $expiry_date = date("Y-m-d", strtotime("+1 years", strtotime($current_paid_date)));
+            $current_paid_date = date("Y-m-d", strtotime($current_paid_date));
+            $today = date('Y-m-d');
             $order_billing_email = $order_data['billing']['email'];
             $message = 'Mancano '.$days.' giorni alla scadenza dell\'adozione del tuo albero, per rinnovare clicca qui: 
                         <a href="'.home_url().'/renewal/?order_id='.$order->ID.'&token='.montepisanotree_add_token($order->ID).'">Rinnova il tuo adozione</a>

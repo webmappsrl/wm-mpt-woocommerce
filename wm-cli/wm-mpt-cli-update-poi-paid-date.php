@@ -14,7 +14,7 @@
 $wm_update_poi_paid_date = function( $args, $assoc_args )
 {
     $arg = array(
-        'limit' => 1000,
+        'limit' => -1,
         'status' => array('completed','processing'),
     );
     $orders = wc_get_orders($arg);

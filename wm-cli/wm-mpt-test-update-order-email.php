@@ -14,7 +14,7 @@
 $wm_mpt_test_update_email = function( $args, $assoc_args )
 {
     $arg = array(
-        'limit' => 10000,
+        'limit' => -1,
         'status' => array('completed','processing'),
     );
     $orders = wc_get_orders($arg);

@@ -19,7 +19,7 @@ $wm_mpt_expired = function( $args, $assoc_args )
     $heading = 'Adozione scaduta';
 
     $arg = array(
-        'limit' => 10000,
+        'limit' => -1,
         'status' => array('completed','processing'),
     );
     $orders = wc_get_orders($arg);
