@@ -10,7 +10,8 @@ function wmGetTreeDetail ($order_id) {
                     foreach ($arr as $data) {
                         if (isset($data['id'])) {
                             $array_id[] = array( 'type' => $type,
-                                'id' => $data['id']
+                                'id' => $data['id'],
+                                'dedication' => $data['dedication']
                             );
                         }
                     }
@@ -41,9 +42,10 @@ function wmGetTreeDetail ($order_id) {
                 
                 ?>
             </div>
-            <div style="border: 1px solid;padding: 0 20px;height: 100%;line-height: 69px;">
+            <div style="border: 1px solid;padding: 0 20px;height: 75px;line-height: 25px;display: inline-grid;align-items: center;">
                 <?php
                 echo  sprintf( '<a href="%s">%s</a>', $poi_permalink, $item_name_poi ); 
+                echo 'Dedica: '.$poi['dedication'];
                 ?>
             </div>
             <div style="border: 1px solid;padding: 0 20px;height: 100%;line-height: 69px;">
