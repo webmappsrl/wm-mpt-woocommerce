@@ -37,6 +37,7 @@ $wm_mpt_renewal = function( $args, $assoc_args )
             $message = 'Mancano '.$days.' giorni alla scadenza dell\'adozione del tuo albero, per rinnovare clicca qui: 
                         <a href="'.home_url().'/renewal/?order_id='.$order->ID.'&token='.montepisanotree_add_token($order->ID).'">Rinnova il tuo adozione</a>
                         ';
+            $message .= wmGetTreeDetail($order->ID);
                 
                 if ($today == $notice_date) {
                     WP_CLI::line( $count .' - order matched ID # ' .$order->ID . ' with order_paid_date: '. $current_paid_date . '.Sending renewal notice with '.$days. ' days to expiry. Expiry date: '. $expiry_date .' notice date:  '.$notice_date);
@@ -60,6 +61,8 @@ $wm_mpt_renewal = function( $args, $assoc_args )
                     $messageADmin = 'Scade tra '.$days.' giorni l\'adozione di un albero, per vedere l\'ordine clicca qui: 
                     <a href="'.esc_url( $order->get_edit_order_url() ).'">ordine numero '.$order->ID.'</a>
                     ';
+                    $messageADmin .= wmGetTreeDetail($order->ID);
+
                     $subjectAdmin = 'è stato mandato un reminder per ordine # '.$order->ID;
                     $wrapped_messageAdmin = $mailer->wrap_message($headingADmin, $messageADmin);
                     $html_messageAdmin = $wc_email->style_inline($wrapped_messageAdmin);
