@@ -20,10 +20,12 @@ $wm_mpt_force_renewal = function( $args, $assoc_args )
     $current_paid_date = get_field('order_paid_date',$args[0]);
     $current_paid_date = date("", strtotime($current_paid_date));
     $order_billing_email = $order_data['billing']['email'];
+    $order_billing_name = $order_data['billing']['first_name'];
     $subject = 'Rinnovo dell\'albero Montepisanotree ';
     $heading = 'Rinnovo Albero';
-    $message = 'è scaduto adozione del tuo albero, per rinnovare clicca qui: 
-                <a href="'.home_url().'/renewal/?order_id='.$args[0].'&token='.montepisanotree_add_token($args[0]).'">Rinnova il tuo adozione</a>
+    $message = 'Ciao '.$order_billing_name.'<br>
+                Rinnova l\'adozione dei tuoi alberi per un anno in più: 
+                <a href="'.home_url().'/renewal/?order_id='.$args[0].'&token='.montepisanotree_add_token($args[0]).'">Rinnova la tua adozione</a>
                 ';
     $message .= wmGetTreeDetail($args[0]);
     
@@ -47,8 +49,8 @@ $wm_mpt_force_renewal = function( $args, $assoc_args )
     wp_mail( $order_billing_email, $subject, $html_message, HTML_EMAIL_HEADERS );
 
     // Admin email
-    $headingADmin = 'Remainder mandato';
-    $messageADmin = 'è scaduto adozione di un albero, per vedere un ordine clicca qui: 
+    $headingADmin = 'Remainder mandato per ordine '.$args[0];
+    $messageADmin = 'è stato mandato una mail di rinnovo per: 
                 <a href="'.esc_url( $order->get_edit_order_url() ).'">ordine numero '.$args[0].'</a>
                 ';
     $messageADmin .= wmGetTreeDetail($args[0]);
