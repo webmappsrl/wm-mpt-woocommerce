@@ -48,7 +48,7 @@ function wmGetTreeDetail ($order_id) {
                 echo 'Dedica: '.$poi['dedication'];
                 ?>
             </div>
-            <div style="border: 1px solid;padding: 0 20px;height: 100%;line-height: 69px;">
+            <div style="border: 1px solid;padding: 0 20px;height: 100%;line-height: 69px;width: 50px;">
                 <?php
                 echo  '€'.$product_price; 
                 ?>
