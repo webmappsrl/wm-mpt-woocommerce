@@ -25,6 +25,7 @@ $wm_mpt_force_renewal = function( $args, $assoc_args )
     $message = 'è scaduto adozione del tuo albero, per rinnovare clicca qui: 
                 <a href="'.home_url().'/renewal/?order_id='.$args[0].'&token='.montepisanotree_add_token($args[0]).'">Rinnova il tuo adozione</a>
                 ';
+    $message .= wmGetTreeDetail($args[0]);
     
     // Define a constant to use with html emails
     define("HTML_EMAIL_HEADERS", array('Content-Type: text/html; charset=UTF-8'));
@@ -50,6 +51,8 @@ $wm_mpt_force_renewal = function( $args, $assoc_args )
     $messageADmin = 'è scaduto adozione di un albero, per vedere un ordine clicca qui: 
                 <a href="'.esc_url( $order->get_edit_order_url() ).'">ordine numero '.$args[0].'</a>
                 ';
+    $messageADmin .= wmGetTreeDetail($args[0]);
+    
     $subjectAdmin = 'è stato mandato un reminder per ordine # '.$args[0];
     $wrapped_messageAdmin = $mailer->wrap_message($headingADmin, $messageADmin);
     $html_messageAdmin = $wc_email->style_inline($wrapped_messageAdmin);
