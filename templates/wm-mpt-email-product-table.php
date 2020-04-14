@@ -42,7 +42,7 @@ function wmGetTreeDetail ($order_id) {
                 
                 ?>
             </div>
-            <div style="border: 1px solid;padding: 15px 20px 0;height: 60px;">
+            <div style="border: 1px solid;padding: 15px 20px 0;height: 60px;width:100%;">
                 <?php
                 echo  sprintf( '<a href="%s">%s</a>', $poi_permalink, $item_name_poi ).'<br>'; 
                 echo 'Dedica: '.$poi['dedication'];
