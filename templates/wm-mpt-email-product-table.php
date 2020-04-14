@@ -29,7 +29,7 @@ function wmGetTreeDetail ($order_id) {
         ?>
         <div style="display: flex;align-items: center;height: 75px;">
 
-            <div style="border: 1px solid;width: 80px;">
+            <div style="border: 1px solid;width: 80px;height: 75px;">
                 <?php
                 $poi_title = get_the_title( $poi['id'] );
                 $poi_permalink = get_permalink($poi['id']);
@@ -42,9 +42,9 @@ function wmGetTreeDetail ($order_id) {
                 
                 ?>
             </div>
-            <div style="border: 1px solid;padding: 0 20px;height: 75px;line-height: 25px;display: inline-grid;align-items: center;">
+            <div style="border: 1px solid;padding: 15px 20px 0;height: 60px;">
                 <?php
-                echo  sprintf( '<a href="%s">%s</a>', $poi_permalink, $item_name_poi ); 
+                echo  sprintf( '<a href="%s">%s</a>', $poi_permalink, $item_name_poi ).'<br>'; 
                 echo 'Dedica: '.$poi['dedication'];
                 ?>
             </div>
