@@ -45,7 +45,9 @@ function wmGetTreeDetail ($order_id) {
             <div style="border: 1px solid;padding: 15px 20px 0;height: 60px;width:100%;">
                 <?php
                 echo  sprintf( '<a href="%s">%s</a>', $poi_permalink, $item_name_poi ).'<br>'; 
-                echo 'Dedica: '.$poi['dedication'];
+                if ($poi['dedication']){
+                    echo 'Dedica: '.$poi['dedication'];
+                }
                 ?>
             </div>
             <div style="border: 1px solid;padding: 0 20px;height: 100%;line-height: 69px;width: 50px;">
