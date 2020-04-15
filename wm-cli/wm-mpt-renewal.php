@@ -34,7 +34,9 @@ $wm_mpt_renewal = function( $args, $assoc_args )
             $current_paid_date = date("Y-m-d", strtotime($current_paid_date));
             $today = date('Y-m-d');
             $order_billing_email = $order_data['billing']['email'];
-            $message = 'Mancano '.$days.' giorni alla scadenza dell\'adozione del tuo albero, per rinnovare clicca qui: 
+            $order_billing_name = $order_data['billing']['first_name'];
+            $message = 'Ciao '.$order_billing_name.'<br>
+                        Mancano '.$days.' giorni alla scadenza dell\'adozione del tuo albero, per rinnovare clicca qui: 
                         <a href="'.home_url().'/renewal/?order_id='.$order->ID.'&token='.montepisanotree_add_token($order->ID).'">Rinnova il tuo adozione</a>
                         ';
             $message .= wmGetTreeDetail($order->ID);
