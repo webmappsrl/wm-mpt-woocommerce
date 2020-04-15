@@ -84,7 +84,7 @@ $wm_mpt_expired = function( $args, $assoc_args )
                 
                 // Admin email
                 $headingADmin = 'Remainder per ordine scaduto';
-                $subjectAdmin = 'è stato mandato un reminder per ordine scaduto # '.$order->ID;
+                $subjectAdmin = 'È stato mandato un reminder per ordine scaduto # '.$order->ID;
                 $messageADmin = 'È Scaduto il periodo di adozione di quest\'ordine: 
                 <a href="'.esc_url( $order->get_edit_order_url() ).'">ordine numero '.$order->ID.'</a>
                 ';

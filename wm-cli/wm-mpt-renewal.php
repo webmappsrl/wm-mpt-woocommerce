@@ -65,7 +65,7 @@ $wm_mpt_renewal = function( $args, $assoc_args )
                     ';
                     $messageADmin .= wmGetTreeDetail($order->ID);
 
-                    $subjectAdmin = 'è stato mandato un reminder per ordine # '.$order->ID;
+                    $subjectAdmin = 'È stato mandato un reminder per ordine # '.$order->ID;
                     $wrapped_messageAdmin = $mailer->wrap_message($headingADmin, $messageADmin);
                     $html_messageAdmin = $wc_email->style_inline($wrapped_messageAdmin);
                     

@@ -50,12 +50,12 @@ $wm_mpt_force_renewal = function( $args, $assoc_args )
 
     // Admin email
     $headingADmin = 'Remainder mandato per ordine '.$args[0];
-    $messageADmin = 'è stato mandato una mail di rinnovo per: 
+    $messageADmin = 'È stato mandato una mail di rinnovo per: 
                 <a href="'.esc_url( $order->get_edit_order_url() ).'">ordine numero '.$args[0].'</a>
                 ';
     $messageADmin .= wmGetTreeDetail($args[0]);
     
-    $subjectAdmin = 'è stato mandato un reminder per ordine # '.$args[0];
+    $subjectAdmin = 'È stato mandato un reminder per ordine # '.$args[0];
     $wrapped_messageAdmin = $mailer->wrap_message($headingADmin, $messageADmin);
     $html_messageAdmin = $wc_email->style_inline($wrapped_messageAdmin);
     
