@@ -38,7 +38,7 @@ $wm_mpt_expired = function( $args, $assoc_args )
                 
                 WP_CLI::line( $count .' - order matched ID # ' .$order->ID . ' with order_paid_date: '. $current_paid_date . '. Sending expiry notice. Expired date: '. $expiry_date .' notice date:  '.$today);
                 
-                $message = 'Ciao '.$order_billing_name.'<br>
+                $message = 'Ciao '.$order_billing_name.',<br>
                             È Scaduto il periodo della tua adozione, da oggi il tuo albero/i è accessibile a tutti. Potresti sempre adottarlo clicca qui: <br>'; 
                 $message .= wmGetTreeDetail($order->ID);
                 WP_CLI::line( ' Resetting paid date of poi with name ' . $item->title .' and ID # '. $item->id);
