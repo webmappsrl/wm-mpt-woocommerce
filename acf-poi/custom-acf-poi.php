@@ -56,24 +56,6 @@ if( function_exists('acf_add_local_field_group') ):
 		'key' => 'group_5caf0f4d42775',
 		'title' => 'Aggiungi data di acquisto',
 		'fields' => array(
-			// array(
-			// 	'key' => 'wm_order_parid_date',
-			// 	'label' => 'Data di acquisto',
-			// 	'name' => '_paid_date',
-			// 	'type' => 'text',
-			// 	'instructions' => '',
-			// 	'required' => 0,
-			// 	'conditional_logic' => 0,
-			// 	'wrapper' => array(
-			// 		'width' => '',
-			// 		'class' => '',
-			// 		'id' => '',
-			// 	),
-			// 	'display_format' => 'd/m/Y',
-			// 	'return_format' => 'd/m/Y',
-			// 	'first_day' => 1,
-			// 	'readonly' => 1
-			// ),
 			array(
 				'key' => 'wm_mpt_order_paid_date',
 				'label' => 'Data di acquisto',
@@ -113,6 +95,25 @@ if( function_exists('acf_add_local_field_group') ):
 				'rows' => '',
 				'new_lines' => '',
 				'readonly' => 1
+			),
+			array(
+				'key' => 'wm_mpt_target_delivery_date',
+				'label' => 'Data di consegna della Targhetta',
+				'name' => 'target_delivery_date',
+				'type' => 'text',
+				'instructions' => 'Inserire la data prevista per la consegna della targhetta in questo formato "YYYY-MM-DD"',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'maxlength' => '',
+				'rows' => '',
+				'new_lines' => ''
 			),
 		),
 		'location' => array(

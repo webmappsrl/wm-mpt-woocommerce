@@ -21,7 +21,7 @@ $wm_mpt_force_renewal = function( $args, $assoc_args )
     $current_paid_date = date("", strtotime($current_paid_date));
     $order_billing_email = $order_data['billing']['email'];
     $order_billing_name = $order_data['billing']['first_name'];
-    $subject = 'Rinnovo dell\'albero Montepisanotree ';
+    $subject = 'Rinnovo dell\'albero Montepisanotree';
     $heading = 'Rinnovo Albero';
     $message = 'Ciao '.$order_billing_name.',<br>
                 Rinnova l\'adozione dei tuoi alberi per un anno in più: 
