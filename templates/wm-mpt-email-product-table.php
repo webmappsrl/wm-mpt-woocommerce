@@ -61,11 +61,12 @@ function wmGetTreeDetail ($order_id) {
     }
     ?>
     <p style="padding-top:30px;margin: 0;"><strong>Totale:</strong> <?php echo  '<strong>€'.$totla_price.'</strong>'; ?></p> 
-    <p style="padding-top:30px;margin: 0;"><strong>Dati di fatturazione:</strong></p> 
+    <h2 style="color:#afad35;display:block;font-family:Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;font-size:18px;font-weight:bold;line-height:130%;margin:0 0 18px;text-align:left"><strong>Indirizzo di fatturazione</strong></h2> 
     <?php
     $order = wc_get_order($order_id);
     $order_meta = get_post_meta($order_id);
     $order_data = $order->get_data();
+    echo '<div style="padding:12px;color:#636363;border:1px solid #e5e5e5">';
     echo $order_data['billing']['first_name'].'<br>';
     echo $order_data['billing']['last_name'].'<br>';
     echo $order_data['billing']['address_1'].'<br>';
@@ -76,5 +77,6 @@ function wmGetTreeDetail ($order_id) {
     echo $order_data['billing']['email'].'<br>';
     echo $order_data['billing']['phone'].'<br>';
     echo $order_meta['billing_codice_fiscale'][0];
+    echo '</div>';
     return ob_get_clean();
 }
