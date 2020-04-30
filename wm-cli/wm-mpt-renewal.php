@@ -28,7 +28,7 @@ $wm_mpt_renewal = function( $args, $assoc_args )
     if ($days && is_int($days)) {
         foreach ($orders as $order ){
             $renewal_type = montepisanotree_order_is_already_renewed($args[0]);
-            if ($renewal_type[0] == 'already_renewed') {
+            if (in_array('already_expired', $renewal_type) || in_array('already_renewed', $renewal_type)) {
                 WP_CLI::line( 'The order #'.$order->ID. 'has already been renewed');
             } else {
                 $order_data = $order->get_data();
@@ -40,12 +40,14 @@ $wm_mpt_renewal = function( $args, $assoc_args )
                 $order_billing_email = $order_data['billing']['email'];
                 $order_billing_name = $order_data['billing']['first_name'];
                 $message = 'Ciao '.$order_billing_name.',<br>
-                            Mancano '.$days.' giorni alla scadenza dell\'adozione del tuo albero, per rinnovare clicca qui: 
+                            Mancano '.$days.' prima che l’adozione del tuo albero scada. Se vuoi rinnovarla alle stesse condizioni dell’anno precedente clicca qui: 
                             </p><p><a style="color: white;font-weight: normal;text-decoration: none;padding: 10px 20px; background-color:#afad35;font-size: 16px;" href="'.home_url().'/renewal/?order_id='.$order->ID.'&token='.montepisanotree_add_token($order->ID).'">Rinnova il tuo adozione</a>
                             ';
                 $message .= '<h2 style="color:#afad35;display:block;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif;font-size:18px;font-weight:bold;line-height:130%;margin:0 0 18px;text-align:left">
                 Dettaglio dell\'ordine</h2>';
                 $message .= wmGetTreeDetail($order->ID);
+                $message .= '<p>Se desideri invece cambiare tipo di adozione o creare una nuova targhetta ti invitiamo a far scadere l’adozione e crearne una nuova.</p>';
+                $message .= '<p>Grazie ancora</p>';
                     
                     if ($today == $notice_date) {
                         WP_CLI::line( $count .' - order matched ID # ' .$order->ID . ' with order_paid_date: '. $current_paid_date . '.Sending renewal notice with '.$days. ' days to expiry. Expiry date: '. $expiry_date .' notice date:  '.$notice_date);
@@ -71,7 +73,7 @@ $wm_mpt_renewal = function( $args, $assoc_args )
                         ';
                         $messageADmin .= wmGetTreeDetail($order->ID);
 
-                        $subjectAdmin = 'È stato mandato un reminder per ordine # '.$order->ID;
+                        $subjectAdmin = 'È stato inviato un reminder per ordine # '.$order->ID;
                         $wrapped_messageAdmin = $mailer->wrap_message($headingADmin, $messageADmin);
                         $html_messageAdmin = $wc_email->style_inline($wrapped_messageAdmin);
                         

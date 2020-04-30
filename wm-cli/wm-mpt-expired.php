@@ -39,33 +39,26 @@ $wm_mpt_expired = function( $args, $assoc_args )
                 WP_CLI::line( $count .' - order matched ID # ' .$order->ID . ' with order_paid_date: '. $current_paid_date . '. Sending expiry notice. Expired date: '. $expiry_date .' notice date:  '.$today);
                 
                 $message = 'Ciao '.$order_billing_name.',<br>
-                            È Scaduto il periodo della tua adozione, da oggi il tuo albero/i è accessibile a tutti. Potresti sempre adottarlo clicca qui: <br>'; 
+                Ti informiamo che l’adozione è scaduta. Da oggi il tuo albero/i è accessibile a tutti. Se lo desideri puoi sempre adottarlo clicca qui: <br>'; 
                 $message .= wmGetTreeDetail($order->ID);
-                WP_CLI::line( ' Resetting paid date of poi with name ' . $item->title .' and ID # '. $item->id);
-                delete_field('paid_date',$item->id);
-                // $current_json = get_field('order_json',$order->ID);
-                // if ($current_json && !empty($current_json)){
-                //     $current_json = json_decode($current_json);
-                //     foreach ($current_json as $modality => $items) {
-                //         if (is_array($items)) :
-                //         foreach ( $items as $item) {
-                //             $message .= '<a href="'.esc_url(get_permalink($item->id)).'">'.$item->title .' - '. $modality .'</a><br>';
-                //             WP_CLI::line( ' Resetting paid date of poi with name ' . $item->title .' and ID # '. $item->id);
-                //             delete_field('paid_date',$item->id);
-                //         }
-                //         endif;
-                //     }
-                // } else {
-                //     foreach ($order->get_items() as $item_id => $item) {
-                //         $product_name_variation = $item->get_name();
-                //         $poi_name = preg_replace('/[^0-9]/', '', $product_name_variation); //substr($product_name_variation,0,3);
-                //         $poi = get_page_by_title( $poi_name, OBJECT, 'poi' );
-                //         $poi_id = $poi->ID;
-                //         $message .= '<a href="'.esc_url(get_permalink($poi->ID)).'">'.$product_name_variation.'</a><br>';
-                //         WP_CLI::line( ' Resetting paid date of poi with name ' . $poi_name .' and ID # '. $poi_id);
-                //         delete_field('paid_date',$poi->ID);
-                //     }
-                // }
+                
+                montepisanotree_add_already_expired_to_oldorder($order->ID);
+                WP_CLI::line( 'Adding already_expired to the order #'.$order->ID);
+                montepisanotree_delete_token( $order->ID );
+                WP_CLI::line( 'Removing renewal token of order #'.$order->ID);
+                $current_json = get_field('order_json',$order->ID);
+                if ($current_json && !empty($current_json)){
+                    $current_json = json_decode($current_json);
+                    foreach ($current_json as $modality => $items) {
+                        if (is_array($items)) :
+                        foreach ( $items as $item) {
+                            $message .= '<a href="'.esc_url(get_permalink($item->id)).'">'.$item->title .' - '. $modality .'</a><br>';
+                            WP_CLI::line( 'Resetting paid date of poi with name ' . $item->title .' and ID # '. $item->id);
+                            delete_field('paid_date',$item->id);
+                        }
+                        endif;
+                    }
+                }
                 
                 //Get woocommerce mailer from instance
                 $mailer = WC()->mailer();
@@ -84,7 +77,7 @@ $wm_mpt_expired = function( $args, $assoc_args )
                 
                 // Admin email
                 $headingADmin = 'Remainder per ordine scaduto';
-                $subjectAdmin = 'È stato mandato un reminder per ordine scaduto # '.$order->ID;
+                $subjectAdmin = 'È stato inviato  un reminder per ordine scaduto # '.$order->ID;
                 $messageADmin = 'È Scaduto il periodo di adozione di quest\'ordine: 
                 <a href="'.esc_url( $order->get_edit_order_url() ).'">ordine numero '.$order->ID.'</a>
                 ';
