@@ -20,7 +20,7 @@ $wm_mpt_expired = function( $args, $assoc_args )
 
     $arg = array(
         'limit' => -1,
-        'status' => array('completed','processing'),
+        'status' => array('completed'),
     );
     $orders = wc_get_orders($arg);
     $count = 1;
