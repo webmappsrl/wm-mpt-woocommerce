@@ -40,8 +40,8 @@ $wm_mpt_renewal = function( $args, $assoc_args )
                 $order_billing_email = $order_data['billing']['email'];
                 $order_billing_name = $order_data['billing']['first_name'];
                 $message = 'Ciao '.$order_billing_name.',<br>
-                            Mancano '.$days.' prima che l’adozione del tuo albero scada. Se vuoi rinnovarla alle stesse condizioni dell’anno precedente clicca qui: 
-                            </p><p><a style="color: white;font-weight: normal;text-decoration: none;padding: 10px 20px; background-color:#afad35;font-size: 16px;" href="'.home_url().'/renewal/?order_id='.$order->ID.'&token='.montepisanotree_add_token($order->ID).'">Rinnova il tuo adozione</a>
+                            Mancano '.$days.' giorni prima che l’adozione del tuo albero scada. Se vuoi rinnovarla alle stesse condizioni dell’anno precedente clicca qui: 
+                            </p><p><a style="color: white;font-weight: normal;text-decoration: none;padding: 10px 20px; background-color:#afad35;font-size: 16px;" href="'.home_url().'/renewal/?order_id='.$order->ID.'&token='.montepisanotree_add_token($order->ID).'">Rinnova la tua adozione</a>
                             ';
                 $message .= '<h2 style="color:#afad35;display:block;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif;font-size:18px;font-weight:bold;line-height:130%;margin:0 0 18px;text-align:left">
                 Dettaglio dell\'ordine</h2>';
