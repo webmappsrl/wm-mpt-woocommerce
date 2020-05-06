@@ -39,7 +39,7 @@ $wm_mpt_expired = function( $args, $assoc_args )
                 WP_CLI::line( $count .' - order matched ID # ' .$order->ID . ' with order_paid_date: '. $current_paid_date . '. Sending expiry notice. Expired date: '. $expiry_date .' notice date:  '.$today);
                 
                 $message = 'Ciao '.$order_billing_name.',<br>
-                Ti informiamo che l’adozione è scaduta. Da oggi il tuo albero/i è accessibile a tutti. Se lo desideri puoi sempre adottarlo clicca qui: <br>'; 
+                Ti informiamo che l’adozione è scaduta. Da oggi il tuo albero/i è accessibile a tutti. Se lo desideri puoi sempre adottarlo cliccando qui: <br>'; 
                 $message .= wmGetTreeDetail($order->ID);
                 
                 montepisanotree_add_already_expired_to_oldorder($order->ID);
