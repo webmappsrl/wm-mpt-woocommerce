@@ -13,9 +13,9 @@
  */
 $wm_mpt_clean_paid_date_500 = function( $args, $assoc_args )
 {
-    $arg = array( 'post_type' => 'poi', 'post_name__in' => array('574','573','572','571','570','569','568','567','566','565','564','563','562','520','521','522','515','516','517','518','519','500','501','502','503','504','505','506','507','508','509','510','511','512','513','514'), 'posts_per_page' => -1 ) ;
+    $arg = array( 'post_type' => 'poi', 'post_name__in' => array('403','401','398','315','361','354','355','370','379','380','384','455','435','427','415','414','458'), 'posts_per_page' => -1 ) ;
     
-    if ( home_url() == 'https://test.montepisanotree.org' || home_url() == 'http://localhost/mpt') {
+    if ( home_url() == 'https://test.montepisanotree.org' || home_url() == 'http://localhost/mpt' || home_url() == 'https://preprod.montepisanotree.org') {
         $pois = get_posts($arg);
         $count = 1;
         foreach ($pois as $poi ){
