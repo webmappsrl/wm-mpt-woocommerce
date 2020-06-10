@@ -39,18 +39,21 @@ $wm_mpt_renewal = function( $args, $assoc_args )
                 $today = date('Y-m-d');
                 $order_billing_email = $order_data['billing']['email'];
                 $order_billing_name = $order_data['billing']['first_name'];
-                $message = 'Ciao '.$order_billing_name.',<br>
-                            Mancano '.$days.' giorni prima che l’adozione del tuo albero scada. Se vuoi rinnovarla alle stesse condizioni dell’anno precedente clicca qui: 
-                            </p><p><a style="color: white;font-weight: normal;text-decoration: none;padding: 10px 20px; background-color:#afad35;font-size: 16px;" href="'.home_url().'/renewal/?order_id='.$order->ID.'&token='.montepisanotree_add_token($order->ID).'">Rinnova la tua adozione</a>
-                            ';
-                $message .= '<h2 style="color:#afad35;display:block;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif;font-size:18px;font-weight:bold;line-height:130%;margin:0 0 18px;text-align:left">
-                Dettaglio dell\'ordine</h2>';
-                $message .= wmGetTreeDetail($order->ID);
-                $message .= '<p>Se desideri invece cambiare tipo di adozione o creare una nuova targhetta ti invitiamo a far scadere l’adozione e crearne una nuova.</p>';
-                $message .= '<p>Grazie ancora</p>';
+                
                     
                     if ($today == $notice_date) {
                         WP_CLI::line( $count .' - order matched ID # ' .$order->ID . ' with order_paid_date: '. $current_paid_date . '.Sending renewal notice with '.$days. ' days to expiry. Expiry date: '. $expiry_date .' notice date:  '.$notice_date);
+
+                        $message = 'Ciao '.$order_billing_name.',<br>
+                        Mancano '.$days.' giorni prima che l’adozione del tuo albero scada. Se vuoi rinnovarla alle stesse condizioni dell’anno precedente clicca qui: 
+                        </p><p><a style="color: white;font-weight: normal;text-decoration: none;padding: 10px 20px; background-color:#afad35;font-size: 16px;" href="'.home_url().'/renewal/?order_id='.$order->ID.'&token='.montepisanotree_add_token($order->ID).'">Rinnova la tua adozione</a>
+                        ';
+                        $message .= '<h2 style="color:#afad35;display:block;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif;font-size:18px;font-weight:bold;line-height:130%;margin:0 0 18px;text-align:left">
+                        Dettaglio dell\'ordine</h2>';
+                        $message .= wmGetTreeDetail($order->ID);
+                        $message .= '<p>Se desideri invece cambiare tipo di adozione o creare una nuova targhetta ti invitiamo a far scadere l’adozione e crearne una nuova.</p>';
+                        $message .= '<p>Grazie ancora</p>';
+
                         // Get woocommerce mailer from instance
                         $mailer = WC()->mailer();
                         

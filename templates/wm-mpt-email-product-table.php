@@ -26,22 +26,16 @@ function wmGetTreeDetail ($order_id) {
         $product = wc_get_product($product_name->ID);
         $product_price = $product->get_regular_price();
         $totla_price = $totla_price + $product_price;
+        $poi_title = get_the_title( $poi['id'] );
+        $poi_permalink = get_permalink($poi['id']);
+        $terms = get_the_terms( $poi['id'] , 'webmapp_category' );
+
+        $item_name_poi = $poi['type'] . ' - ' . $terms[0]->name . ' - ' . $poi_title;
+        $product_get_image = get_the_post_thumbnail_url($poi['id']);
         ?>
         <div style="display: flex;align-items: center;height: 75px;">
 
-            <div style="border: 1px solid;width: 80px;height: 75px;">
-                <?php
-                $poi_title = get_the_title( $poi['id'] );
-                $poi_permalink = get_permalink($poi['id']);
-                $terms = get_the_terms( $poi['id'] , 'webmapp_category' );
-
-                $item_name_poi = $poi['type'] . ' - ' . $terms[0]->name . ' - ' . $poi_title;
-                $product_get_image = get_the_post_thumbnail($poi['id']);
-                
-                echo $product_get_image;
-                
-                ?>
-            </div>
+            <div style="border: 1px solid;width: 80px;height: 75px;background: url(<?php echo $product_get_image;?>) center / cover no-repeat;"> </div>
             <div style="border: 1px solid;padding: 15px 20px 0;height: 60px;width:100%;">
                 <?php
                 echo  sprintf( '<a href="%s">%s</a>', $poi_permalink, $item_name_poi ).'<br>'; 
