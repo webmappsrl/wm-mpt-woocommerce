@@ -27,7 +27,7 @@ $wm_mpt_expired = function( $args, $assoc_args )
     
         foreach ($orders as $order ){
             $renewal_type = montepisanotree_order_is_already_renewed($order);
-            if (in_array('already_expired', $renewal_type)) {
+            if (in_array('already_expired', $renewal_type) || in_array('already_renewed', $renewal_type)) {
                 WP_CLI::line( 'The order #'.$order->ID. 'is already expired');
             } else {
                 $order_data = $order->get_data();
