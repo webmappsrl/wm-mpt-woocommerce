@@ -19,4 +19,5 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
   require_once dirname( __FILE__ ) . '/wm-cli/wm-mpt-duplicate-orders-meta-data.php';
   require_once dirname( __FILE__ ) . '/wm-cli/wm-mpt-test-update-order-email.php';
   require_once dirname( __FILE__ ) . '/wm-cli/wm-mpt-set-order-paid-date.php';
+  require_once dirname( __FILE__ ) . '/wm-cli/wm-mpt-set-poi-paid-date.php';
 }
