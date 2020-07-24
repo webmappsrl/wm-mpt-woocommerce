@@ -59,6 +59,7 @@ $wm_mpt_expired = function( $args, $assoc_args )
                                 $message .= '<a href="'.esc_url(get_permalink($item->id)).'">'.$item->title .' - '. $modality .'</a><br>';
                                 WP_CLI::line( 'Resetting paid date of poi with name ' . $item->title .' and ID # '. $item->id);
                                 delete_field('paid_date',$item->id);
+                                delete_field('color',$item->id);
                             }
                             endif;
                         }
