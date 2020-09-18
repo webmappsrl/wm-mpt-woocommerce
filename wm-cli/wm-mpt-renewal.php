@@ -70,7 +70,7 @@ $wm_mpt_renewal = function( $args, $assoc_args )
                         wp_mail( $order_billing_email, $subject, $html_message, HTML_EMAIL_HEADERS );
                         
                         // Admin email
-                        $headingADmin = 'Remainder per '. $days .' gironi prima di scadenza mandato ';
+                        $headingADmin = 'Remainder per '. $days .' giorni prima di scadenza mandato ';
                         $messageADmin = 'Scade tra '.$days.' giorni l\'adozione di un albero, per vedere l\'ordine clicca qui: 
                         <a href="'.esc_url( $order->get_edit_order_url() ).'">ordine numero '.$order->ID.'</a>
                         ';
